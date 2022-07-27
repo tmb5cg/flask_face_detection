@@ -45,7 +45,7 @@ def upload_file():
         
         # In memory
         image_content = cv2.imencode('.jpg', image)[1].tostring()
-        encoded_image = base64.encodestring(image_content)
+        encoded_image = base64.b64encode(image_content)
         to_send = 'data:image/jpg;base64, ' + str(encoded_image, 'utf-8')
 
     return render_template('index.html', faceDetected=faceDetected, num_faces=num_faces, image_to_show=to_send, init=True)
